@@ -1,0 +1,7 @@
+project_id = "jyybcxfmhjayivwtbono"
+
+[functions.analyze-feedback]
+verify_jwt = false
+
+[functions.voice-to-text]
+verify_jwt = false
