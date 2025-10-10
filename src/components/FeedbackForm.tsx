@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,11 +8,17 @@ import { supabase } from "@/integrations/supabase/client";
 
 interface FeedbackFormProps {
   language: string;
-  initialText?: string;
+  voiceTranscript?: string;
 }
 
-export const FeedbackForm = ({ language, initialText = "" }: FeedbackFormProps) => {
-  const [feedback, setFeedback] = useState(initialText);
+export const FeedbackForm = ({ language, voiceTranscript = "" }: FeedbackFormProps) => {
+  const [feedback, setFeedback] = useState("");
+  
+  useEffect(() => {
+    if (voiceTranscript) {
+      setFeedback(prev => prev ? `${prev} ${voiceTranscript}` : voiceTranscript);
+    }
+  }, [voiceTranscript]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 

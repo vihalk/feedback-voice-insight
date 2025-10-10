@@ -108,7 +108,7 @@ const Index = () => {
                     <h2 className="text-2xl font-bold text-center">
                       {language === "ta" ? "உரை உள்ளீடு" : "Text Input"}
                     </h2>
-                    <FeedbackForm language={language} initialText={voiceTranscript} />
+                    <FeedbackForm language={language} voiceTranscript={voiceTranscript} />
                   </div>
                 </div>
               </div>
