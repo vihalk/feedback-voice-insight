@@ -23,15 +23,9 @@ const Index = () => {
 
   const handleVoiceTranscript = (text: string) => {
     setVoiceTranscript(text);
+    // Clear immediately after setting to allow form to process it
+    setTimeout(() => setVoiceTranscript(""), 100);
   };
-
-  useEffect(() => {
-    // Clear transcript after 1 second to allow form to process it
-    if (voiceTranscript) {
-      const timer = setTimeout(() => setVoiceTranscript(""), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [voiceTranscript]);
 
   return (
     <div className="min-h-screen bg-background">
